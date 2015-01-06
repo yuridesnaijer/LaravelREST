@@ -35,9 +35,12 @@ class UrlController extends \BaseController {
 	 */
 	public function store()
 	{
+        $postData = file_get_contents("php://input");
+        $json = json_decode($postData, true);
+
 		$url = new Url;
-		$url->url = Request::get('url');
-		$url->description = Request::get('description');
+		$url->url = $json['url'];
+		$url->description = $json['description'];
 		$url->user_id = Auth::user()->id;
 //		TODO: validate and filter
 		$url->save();
