@@ -1,0 +1,14 @@
+location
+    name
+    address
+    city
+    max persons
+    description
+    pictures -> meerdere foto's
+    catering -> eigen catering of niet
+    artiest -> huisartiest of niet
+
+Hoe zend ik een options response?
+
+
+

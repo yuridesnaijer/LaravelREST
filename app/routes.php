@@ -16,6 +16,18 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::group(array('prefix' => 'api/v1', 'before' => 'auth.basic'), function(){
+Route::group(array('prefix' => 'v1'), function(){
+
+    Route::options('{all}', function ()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: X-Requested-With');
+    })
+        ->where('all', '.*');
+
 	Route::resource('url', 'UrlController');
+    Route::resource('locations', 'LocationController');
+    Route::resource('locations.photos', 'LocationPhotoController');
+
 });
+
